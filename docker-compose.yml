@@ -19,7 +19,7 @@ services:
       - /tmp/php-proxy-evaluate-cache:/cache # persistent cache
     command: php /evaluate-toggle.php
   edge:
-    image: ghcr.io/unleash/unleash-edge:latest
+    image: unleashorg/unleash-edge:latest
     pull_policy: always
     depends_on:
       - setup
