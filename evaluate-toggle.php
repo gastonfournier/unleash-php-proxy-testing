@@ -30,16 +30,20 @@ $unleash = UnleashBuilder::create()
 
 $evaluations = 250;
 $enabledCount = 0; // Initialize counter for enabled toggles
-$toggle = 'a_toggle_10';
 
-$unleash->isEnabled($toggle); // warm up
+$n = 15; // number of toggles to warmup and evaluate
 
-// measure time taken to evaluate 25 times
+for ($i = 1; $i <= $n; $i++) {
+    $toggle = "a_toggle_{$i}";
+    $unleash->isEnabled($toggle); // warm up
+}
+
 $startTime = microtime(true);
 for ($i = 1; $i <= $evaluations; $i++) {
-    //$unleash->set_context
+    $i_mod_n = ($i % $n) + 1;
+    $toggle = "a_toggle_{$i_mod_n}";
     if ($unleash->isEnabled($toggle)) {
-        echo "{$i}: {$toggle} is enabled \n";
+        //echo "{$i}: {$toggle} is enabled \n"; // removed for performance
         $enabledCount++;
     } else {
         echo "{$i}: {$toggle} is disabled \n";
@@ -50,4 +54,4 @@ $endTime = microtime(true);
 sleep(1); // Wait 1 second before printing metrics
 $timeInMs = ($endTime - $startTime) * 1000;
 $avg = $timeInMs/$evaluations;
-echo "[{$timeInMs}ms] (average of {$avg}ms per eval) {$toggle} was enabled {$enabledCount} out of {$evaluations} times.\n";
+echo "[{$timeInMs}ms] (average of {$avg}ms per eval) toggle was enabled {$enabledCount} out of {$evaluations} times.\n";
