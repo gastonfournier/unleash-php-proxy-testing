@@ -1,9 +1,5 @@
-Before pulling unleash image you need to sign in to ghcr.io with a token that can read packages
-
-`echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin`
-
 To run the sample:
-- `docker compose up`
+- `docker compose up evaluate`
 
 Then you can login to unleash at 4242 and check the metrics of the toggle created.
 
