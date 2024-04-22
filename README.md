@@ -1,7 +1,9 @@
 To run the sample:
 - `docker compose up evaluate`
 
-Then you can login to unleash at 4242 and check the metrics of the toggle created.
+**Note:** evaluate-toggle.php does a warm up of the SDK. To disable it just comment out the relevant lines in evaluate-toggle.php
+
+Then you can login to unleash at 4242 and check the metrics of the toggles created.
 
 ```mermaid
 flowchart LR
