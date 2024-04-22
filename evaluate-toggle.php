@@ -30,7 +30,7 @@ $unleash = UnleashBuilder::create()
 
 $evaluations = 250;
 $enabledCount = 0; // Initialize counter for enabled toggles
-$toggle = 'a_toggle_100';
+$toggle = 'a_toggle_10';
 
 $unleash->isEnabled($toggle); // warm up
 

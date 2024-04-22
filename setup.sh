@@ -1,7 +1,7 @@
 set -e
 
 # Loop to create and enable the feature toggle 100 times
-for i in $(seq 1 1000); do
+for i in $(seq 1 25); do
     # Create a unique feature toggle name for each iteration
     toggle_name="a_toggle_$i"
 

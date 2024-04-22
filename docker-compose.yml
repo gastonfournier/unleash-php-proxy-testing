@@ -30,7 +30,7 @@ services:
       TOKENS: "*:development.unleash-insecure-client-api-token"
     command: edge -m 1
     healthcheck:
-      test: wget -q -O - http://localhost:3063/internal-backstage/ready | grep -q "READY" || exit 1
+      test: (wget -q -O - http://localhost:3063/internal-backstage/ready | grep -q "READY") || exit 1
       interval: 1s
       timeout: 1m
       retries: 5
