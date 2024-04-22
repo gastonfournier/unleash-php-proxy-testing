@@ -27,14 +27,14 @@ services:
       - "3063:3063"
     environment:
       UPSTREAM_URL: http://unleash:4242
-      REDIS_URL: redis://redis:6379
       TOKENS: "*:development.unleash-insecure-client-api-token"
     command: edge -m 1
-  redis:
-    image: redis:latest
-    pull_policy: always
-    ports:
-      - "6379:6379"
+    healthcheck:
+      test: wget -q -O - http://localhost:3063/internal-backstage/ready | grep -q "READY" || exit 1
+      interval: 1s
+      timeout: 1m
+      retries: 5
+      start_period: 15s
   unleash:
     image: unleashorg/unleash-server
     pull_policy: always
