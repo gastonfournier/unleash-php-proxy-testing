@@ -46,7 +46,8 @@ for ($i = 1; $i <= $evaluations; $i++) {
     }
 }
 $endTime = microtime(true);
-    
+
 sleep(1); // Wait 1 second before printing metrics
 $timeInMs = ($endTime - $startTime) * 1000;
-echo "[{$timeInMs}ms] {$toggle} was enabled {$enabledCount} out of {$evaluations} times.\n";
+$avg = $timeInMs/$evaluations;
+echo "[{$timeInMs}ms] (average of {$avg}ms per eval) {$toggle} was enabled {$enabledCount} out of {$evaluations} times.\n";
